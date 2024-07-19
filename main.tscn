@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ud0w5xovdup"]
+[gd_scene load_steps=7 format=3 uid="uid://d0ud0w5xovdup"]
 
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://player.tscn" id="1_wagcx"]
+[ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://delivery_box.tscn" id="2_lc3d3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jcwer"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_76tob"]
 size = Vector3(30, 1, 30)
@@ -17,6 +20,7 @@ ambient_light_energy = 3.0
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0227242, -1.29468, 0.128731)
+physics_material_override = SubResource("PhysicsMaterial_jcwer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_76tob")
@@ -32,7 +36,7 @@ shadow_opacity = 0.8
 shadow_blur = 5.0
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_wagcx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90297, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.879568, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(0.866025, 0.245452, -0.435607, 0, 0.871214, 0.490904, 0.5, -0.425135, 0.754493, -13.316, 20.658, 40.689)
@@ -44,3 +48,6 @@ fov = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fm4iv")
+
+[node name="Delivery Box" parent="." instance=ExtResource("2_lc3d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)

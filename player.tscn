@@ -4,11 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://Player Model.tscn" id="2_nqlyl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyuda"]
+size = Vector3(3.5, 5, 3.5)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_1l77p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52241, 0)
 shape = SubResource("BoxShape3D_nyuda")
 
 [node name="Player Model" parent="." instance=ExtResource("2_nqlyl")]

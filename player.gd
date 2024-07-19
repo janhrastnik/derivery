@@ -5,9 +5,21 @@ extends CharacterBody3D
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 
+var push_force = 25.0
+
 var target_velocity = Vector3.ZERO
 
 @onready var animation_player: AnimationPlayer = get_node("Player Model/AnimationPlayer")
+
+var nearby_box = null
+
+var held_box = null
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact") and nearby_box is RigidBody3D:
+		grab_delivery_box(nearby_box)
+	elif event.is_action_pressed("interact"):
+		print(basis)
 
 func _physics_process(delta):
 	# We create a local variable to store the input direction.
@@ -42,9 +54,29 @@ func _physics_process(delta):
 
 	# Moving the Character
 	velocity = target_velocity
-	if velocity.length() > 0:
+	
+	if held_box is RigidBody3D:
+		animation_player.play("Hold")
+	elif velocity.length() > 0:
 		animation_player.play("Move")
-		print(velocity)
 	else:
-		animation_player.stop()
+		animation_player.play("Idle")
 	move_and_slide()
+
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		var collider = c.get_collider() 
+		if collider is RigidBody3D:
+			nearby_box = collider
+			collider.apply_central_impulse(-c.get_normal() * push_force * delta)
+
+func grab_delivery_box(box: RigidBody3D):
+	box.reparent(self)
+	held_box = box
+	box.gravity_scale = 0
+	box.disable_mode = DisableMode.DISABLE_MODE_REMOVE
+	box.process_mode = Node.PROCESS_MODE_DISABLED
+	box.global_position = global_position + Vector3(0, 2, 0) + basis.z.sign() * Vector3(0, 0, -3)
+	print(position)
+	print(basis.z.sign() * Vector3(0, 0, 1))
