@@ -29,7 +29,7 @@ func _physics_process(delta):
 		pass
 		direction = direction.normalized()
 		# Setting the basis property will affect the rotation of the node.
-		basis = Basis.looking_at(direction * -1)
+		basis = Basis.looking_at(direction)
 
 	# Ground Velocity
 	target_velocity.x = direction.x * speed
