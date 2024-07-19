@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d3juer55b315x"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_1l77p"]
-[ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://Player Model.tscn" id="2_nqlyl"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1l77p"]
+[ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://scenes/player/Player Model.tscn" id="2_nqlyl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyuda"]
 size = Vector3(4, 5, 4)

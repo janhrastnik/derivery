@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnuoc81h68xf3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3sk45"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wdijl"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_3sk45")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ikwdd"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_3sk45")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyrtj"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.329412, 0.564706, 1, 0.682353)
+roughness = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_wdijl")
+refraction_enabled = true
+refraction_texture = SubResource("NoiseTexture2D_ikwdd")
+uv1_scale = Vector3(0.04, 0.04, 0.04)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5nyq"]
+material = SubResource("StandardMaterial3D_eyrtj")
+size = Vector3(20, 20, 20)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_u5nyq")
