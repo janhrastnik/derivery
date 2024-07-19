@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt2gfgcl2t6gp"]
+[gd_scene load_steps=5 format=3 uid="uid://bt2gfgcl2t6gp"]
+
+[ext_resource type="Script" path="res://delivery_box.gd" id="1_8obv5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gu8nj"]
 
@@ -8,6 +10,7 @@
 
 [node name="Delivery Box" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_gu8nj")
+script = ExtResource("1_8obv5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_2ybsr")

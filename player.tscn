@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3juer55b315x"]
+[gd_scene load_steps=5 format=3 uid="uid://d3juer55b315x"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_1l77p"]
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://Player Model.tscn" id="2_nqlyl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyuda"]
-size = Vector3(3.5, 5, 3.5)
+size = Vector3(4, 5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_37xx1"]
+size = Vector3(5.5, 5, 5.5)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_1l77p")
@@ -14,3 +17,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52241, 0)
 shape = SubResource("BoxShape3D_nyuda")
 
 [node name="Player Model" parent="." instance=ExtResource("2_nqlyl")]
+
+[node name="Delivery Box Detector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Delivery Box Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67123, 0)
+shape = SubResource("BoxShape3D_37xx1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Details Text" type="Label" parent="UI"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -73.0
+offset_right = 79.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Grab Box [Spacebar]"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_entered"]
+[connection signal="body_exited" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_exited"]

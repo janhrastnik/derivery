@@ -11,15 +11,17 @@ var target_velocity = Vector3.ZERO
 
 @onready var animation_player: AnimationPlayer = get_node("Player Model/AnimationPlayer")
 
+@onready var details_text: Label = get_node("UI/Details Text")
+
 var nearby_box = null
 
 var held_box = null
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and nearby_box is RigidBody3D:
+	if event.is_action_pressed("interact") and nearby_box is DeliveryBox and held_box == null:
 		grab_delivery_box(nearby_box)
-	elif event.is_action_pressed("interact"):
-		print(basis)
+	elif event.is_action_pressed("interact") and held_box != null:
+		release_delivery_box()
 
 func _physics_process(delta):
 	# We create a local variable to store the input direction.
@@ -68,15 +70,34 @@ func _physics_process(delta):
 		var c = get_slide_collision(i)
 		var collider = c.get_collider() 
 		if collider is RigidBody3D:
-			nearby_box = collider
 			collider.apply_central_impulse(-c.get_normal() * push_force * delta)
 
 func grab_delivery_box(box: RigidBody3D):
-	box.reparent(self)
 	held_box = box
+	box.reparent(self)
 	box.gravity_scale = 0
 	box.disable_mode = DisableMode.DISABLE_MODE_REMOVE
 	box.process_mode = Node.PROCESS_MODE_DISABLED
-	box.global_position = global_position + Vector3(0, 2, 0) + basis.z.sign() * Vector3(0, 0, -3)
-	print(position)
-	print(basis.z.sign() * Vector3(0, 0, 1))
+	box.global_position = global_position + Vector3(0, 2, 0)
+	box.global_position += basis.z.z * Vector3(0, 0, -3)
+	box.global_position += basis.x.z * Vector3(3, 0, 0)
+
+	details_text.text = "Release Box [Spacebar]"
+
+func release_delivery_box():
+	held_box.reparent(get_parent())
+	held_box.gravity_scale = 1
+	held_box.disable_mode = DisableMode.DISABLE_MODE_KEEP_ACTIVE
+	held_box.process_mode = Node.PROCESS_MODE_INHERIT
+	held_box = null
+
+func _on_delivery_box_detector_body_entered(body: Node3D) -> void:
+	if body is DeliveryBox:
+		details_text.text = "Grab Box [Spacebar]"
+		details_text.visible = true
+		nearby_box = body
+
+func _on_delivery_box_detector_body_exited(body: Node3D) -> void:
+	if body is DeliveryBox and held_box == null:
+		nearby_box = null
+		details_text.visible = false
