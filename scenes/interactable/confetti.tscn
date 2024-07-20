@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwj366gq54lat"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3gkwm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ttrn"]
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+process_material = SubResource("ParticleProcessMaterial_3gkwm")
+draw_pass_1 = SubResource("BoxMesh_3ttrn")

@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://bt2gfgcl2t6gp"]
 
 [ext_resource type="Script" path="res://scenes/interactable/delivery_box.gd" id="1_8obv5"]
+[ext_resource type="PackedScene" uid="uid://d5uutdryr1pt" path="res://scenes/interactable/delivery_box.glb" id="2_g8a4s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gu8nj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ybsr"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_vjqox"]
+size = Vector3(2, 2, 2)
 
 [node name="Delivery Box" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_gu8nj")
@@ -15,5 +15,4 @@ script = ExtResource("1_8obv5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_2ybsr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_vjqox")
+[node name="delivery_box" parent="." instance=ExtResource("2_g8a4s")]

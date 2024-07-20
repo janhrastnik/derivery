@@ -96,7 +96,6 @@ func _on_delivery_box_detector_body_entered(body: Node3D) -> void:
 		details_text.visible = true
 		nearby_box = body
 	elif body is Bridge:
-		print("entered")
 		set_collision_mask_value(2, false)
 
 func _on_delivery_box_detector_body_exited(body: Node3D) -> void:
@@ -104,5 +103,4 @@ func _on_delivery_box_detector_body_exited(body: Node3D) -> void:
 		nearby_box = null
 		details_text.visible = false
 	elif body is Bridge:
-		print("exited")
 		set_collision_mask_value(2, true)
