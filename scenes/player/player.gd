@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody3D
 
 # How fast the player moves in meters per second.
@@ -10,12 +12,19 @@ var push_force = 25.0
 var target_velocity = Vector3.ZERO
 
 @onready var animation_player: AnimationPlayer = get_node("Player Model/AnimationPlayer")
-
-@onready var details_text: Label = get_node("UI/Details Text")
+@onready var ui_animation_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var details_text: Label = get_node("CanvasLayer/UI/Details Text")
+@onready var victory_panel: Panel = get_node("CanvasLayer/UI/Victory Panel")
 
 var nearby_box = null
 
 var held_box = null
+
+var next_level_countdown = 5
+@onready var next_level_text: Label = get_node("CanvasLayer/UI/Victory Panel/Next Level Text")
+
+func _ready() -> void:
+	Singleton.player = self
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and nearby_box is DeliveryBox and held_box == null:
@@ -104,3 +113,12 @@ func _on_delivery_box_detector_body_exited(body: Node3D) -> void:
 		details_text.visible = false
 	elif body is Bridge:
 		set_collision_mask_value(2, true)
+
+func level_complete():
+	ui_animation_player.play("victory_popup")
+	while next_level_countdown > 0:
+		var txt = next_level_text.text
+		txt = txt.left(-1)
+		next_level_text.text = txt + str(next_level_countdown)
+		await get_tree().create_timer(1).timeout
+		next_level_countdown -= 1

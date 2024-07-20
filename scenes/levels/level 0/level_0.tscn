@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmoggcc87gkro"]
+[gd_scene load_steps=12 format=3 uid="uid://cmoggcc87gkro"]
 
+[ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_dhjxn"]
 [ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="1_wsmpi"]
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="2_17nn6"]
 [ext_resource type="PackedScene" uid="uid://chhisc6wb4svb" path="res://scenes/levels/level 0/level_0_river.tscn" id="3_14qdn"]
@@ -15,14 +16,17 @@ ground_bottom_color = Color(0.607843, 0.741176, 0.505882, 1)
 sky_material = SubResource("ProceduralSkyMaterial_batu1")
 
 [sub_resource type="Environment" id="Environment_1nikr"]
-background_mode = 2
+background_mode = 3
 background_color = Color(0.6768, 0.86104, 0.94, 1)
+background_canvas_max_layer = 1
 sky = SubResource("Sky_fxvtn")
 ambient_light_source = 3
 ambient_light_color = Color(0.811765, 0.870588, 0.839216, 1)
 ambient_light_sky_contribution = 0.7
 
 [node name="Level 0" type="Node"]
+
+[node name="BG Animation" parent="." instance=ExtResource("1_dhjxn")]
 
 [node name="Ground" parent="." instance=ExtResource("1_wsmpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -36,9 +40,6 @@ light_color = Color(0.92549, 1, 0.94902, 1)
 shadow_enabled = true
 shadow_opacity = 0.8
 shadow_blur = 5.0
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_17nn6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.1654, 1.49792, -14.077)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(0.866025, 0.245452, -0.435607, 0, 0.871214, 0.490904, 0.5, -0.425135, 0.754493, -13.316, 20.658, 40.689)
@@ -62,3 +63,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4154, 1, 16.2011)
 
 [node name="Delivery Box" parent="." instance=ExtResource("7_7lwip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00856, 2.21631, -15.2551)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_17nn6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.1654, 1.49792, -14.077)

@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dx3cx5lo7875m"]
+
+[ext_resource type="Texture2D" uid="uid://kxv67yh8qy8" path="res://assets/sprites/wave_individual.png" id="1_1l81b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqfvk"]
+bg_color = Color(0.5846, 0.74, 0.67007, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ix6uf"]
+texture = ExtResource("1_1l81b")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(1, 1, 1, 0.0980392)
+
+[sub_resource type="Animation" id="Animation_3ytuh"]
+resource_name = "bg_move"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nlec5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1152, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0vd5"]
+_data = {
+"RESET": SubResource("Animation_nlec5"),
+"bg_move": SubResource("Animation_3ytuh")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="BG Animation" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="BG Animation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqfvk")
+
+[node name="Panel" type="Panel" parent="BG Animation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ix6uf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BG Animation"]
+libraries = {
+"": SubResource("AnimationLibrary_v0vd5")
+}
+autoplay = "bg_move"

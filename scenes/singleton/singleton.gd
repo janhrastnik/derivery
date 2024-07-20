@@ -4,6 +4,8 @@ extends Node
 
 var current_level = 0
 
+var player = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music_player.play()
@@ -13,5 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func level_complete():
+func level_complete_event():
 	current_level += 1
+	if player is Player:
+		player.level_complete()
