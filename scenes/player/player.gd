@@ -85,12 +85,13 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		var collider = c.get_collider() 
-		if collider is RigidBody3D:
+		if collider is DeliveryBox:
 			collider.apply_central_impulse(-c.get_normal() * push_force * delta)
 
-func grab_delivery_box(box: RigidBody3D):
+func grab_delivery_box(box: DeliveryBox):
 	held_box = box
 	box.reparent(self)
+	box.leave_river()
 	box.gravity_scale = 0
 	box.disable_mode = DisableMode.DISABLE_MODE_REMOVE
 	box.process_mode = Node.PROCESS_MODE_DISABLED

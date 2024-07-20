@@ -31,11 +31,16 @@ func _physics_process(delta: float) -> void:
 
 func calculate_path(box: DeliveryBox):
 	var c: Vector3 = box.position
-	c.y = 0.2
-	print("c position: ", c)
-	
+	c.y = 0.1
+	# print("c position: ", c)
+	# print(c)
 	var projected_point = Vector3.ZERO
 	var breakpoint_index = 0
+	
+	path_follow.progress = 0 # reset incase its not already 0
+	
+	var projs = []
+	var proj_diffs = []
 	
 	for i in range(len(points) - 1):
 		var a: Vector3 = points[i]
@@ -57,15 +62,26 @@ func calculate_path(box: DeliveryBox):
 		
 		var proj = a + ab*md
 		var proj_diff = (proj - c).length()
-		# print("PROJECTION: ", proj, ", DIFF: ", proj_diff)
+		print("PROJECTION: ", proj, ", DIFF: ", proj_diff)
 		# print(proj.length())
 		
+		projs.append(proj)
+		proj_diffs.append(proj_diff)
+		
+		"""
 		if proj_diff < 1:
 			# good enough...
 			projected_point = proj
 			breakpoint_index = i
 			break
+		"""
 	
+	var min_diff = proj_diffs.min()
+	var min_diff_i = proj_diffs.find(min_diff)
+
+	projected_point = projs[min_diff_i]
+	breakpoint_index = min_diff_i
+
 	var curve = Curve3D.new()
 	var new_points = points.slice(breakpoint_index+1)
 	new_points.insert(0, projected_point)
@@ -79,8 +95,13 @@ func calculate_path(box: DeliveryBox):
 	path_follow.position = projected_point
 	box.reparent(path_follow)
 	box_ref = box
+	box.river_ref = self
 	is_floating_box = true
 
 func leave_river():
 	is_floating_box = false
+	box_ref.freeze = false
+	box_ref.in_river = false
 	box_ref.gravity_scale = 1
+	box_ref = null
+	path.curve = null
