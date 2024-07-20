@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmoggcc87gkro"]
+[gd_scene load_steps=9 format=3 uid="uid://cmoggcc87gkro"]
 
 [ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="1_wsmpi"]
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="2_17nn6"]
 [ext_resource type="PackedScene" uid="uid://chhisc6wb4svb" path="res://scenes/levels/level 0/level_0_river.tscn" id="3_14qdn"]
 [ext_resource type="PackedScene" uid="uid://bk31smt06f4l4" path="res://scenes/levels/level 0/level 0 grass.tscn" id="4_g5ke0"]
+[ext_resource type="PackedScene" uid="uid://dmx6yo6sjx6le" path="res://scenes/bridges/bridge_2m.tscn" id="5_yp6xu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_batu1"]
 ground_bottom_color = Color(0.607843, 0.741176, 0.505882, 1)
@@ -48,5 +49,8 @@ fov = 30.0
 [node name="River" parent="." instance=ExtResource("3_14qdn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.5, 5)
 
-[node name="Node3D" parent="." instance=ExtResource("4_g5ke0")]
+[node name="Grass" parent="." instance=ExtResource("4_g5ke0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.012, -0.25, 0.069)
+
+[node name="Bridge 2m" parent="." instance=ExtResource("5_yp6xu")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.458809, 1.02697, 9.24251)

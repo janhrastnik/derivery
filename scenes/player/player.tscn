@@ -3,19 +3,23 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1l77p"]
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://scenes/player/Player Model.tscn" id="2_nqlyl"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nyuda"]
-size = Vector3(4, 5, 4)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0h5je"]
+radius = 2.0
+height = 8.49522
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_37xx1"]
-size = Vector3(5.5, 5, 5.5)
+size = Vector3(5.5, 9.79626, 5.5)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 3
+collision_mask = 3
+floor_constant_speed = true
+floor_max_angle = 1.0472
 script = ExtResource("1_1l77p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52241, 0)
-shape = SubResource("BoxShape3D_nyuda")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.29598, 0)
+shape = SubResource("CapsuleShape3D_0h5je")
 
 [node name="Player Model" parent="." instance=ExtResource("2_nqlyl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -23,7 +27,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="Delivery Box Detector" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Delivery Box Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67123, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61721, 0)
 shape = SubResource("BoxShape3D_37xx1")
 
 [node name="UI" type="CanvasLayer" parent="."]
