@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("interact") and held_box != null:
 		release_delivery_box()
 	elif event.is_action("restart"):
-		get_tree().change_scene_to_file("res://scenes/levels/level 0/level_0.tscn")
+		get_tree().change_scene_to_file("res://scenes/levels/level {lvl}/level_{lvl}.tscn".format({"lvl": Singleton.current_level}))
 		# global_position = Singleton.player_s_pos[Singleton.current_level]
 		# Singleton.delivery_box.global_position = Singleton.box_s_pos[Singleton.current_level]
 
@@ -130,6 +130,7 @@ func level_complete():
 		next_level_text.text = txt + str(next_level_countdown)
 		await get_tree().create_timer(1).timeout
 		next_level_countdown -= 1
+	Singleton.switch_level()
 
 
 func _on_help_mouse_entered() -> void:

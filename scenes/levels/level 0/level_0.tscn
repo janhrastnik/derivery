@@ -3,26 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_dhjxn"]
 [ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="1_wsmpi"]
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="2_17nn6"]
+[ext_resource type="PackedScene" uid="uid://c5yyw3gi4mc8b" path="res://scenes/enviroment/world_environment.tscn" id="3_5rhnf"]
 [ext_resource type="PackedScene" uid="uid://chhisc6wb4svb" path="res://scenes/levels/level 0/level_0_river.tscn" id="3_14qdn"]
+[ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="4_8jab8"]
 [ext_resource type="PackedScene" uid="uid://bk31smt06f4l4" path="res://scenes/levels/level 0/level 0 grass.tscn" id="4_g5ke0"]
+[ext_resource type="PackedScene" uid="uid://bk3nruqc2jql6" path="res://scenes/enviroment/marker_3d.tscn" id="5_fwehg"]
 [ext_resource type="PackedScene" uid="uid://dmx6yo6sjx6le" path="res://scenes/bridges/bridge_2m.tscn" id="5_yp6xu"]
 [ext_resource type="PackedScene" uid="uid://dbi1fk5j17up6" path="res://scenes/interactable/delivery_platform.tscn" id="6_5p1s8"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="7_7lwip"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_batu1"]
-ground_bottom_color = Color(0.607843, 0.741176, 0.505882, 1)
-
-[sub_resource type="Sky" id="Sky_fxvtn"]
-sky_material = SubResource("ProceduralSkyMaterial_batu1")
-
-[sub_resource type="Environment" id="Environment_1nikr"]
-background_mode = 3
-background_color = Color(0.6768, 0.86104, 0.94, 1)
-background_canvas_max_layer = 1
-sky = SubResource("Sky_fxvtn")
-ambient_light_source = 3
-ambient_light_color = Color(0.811765, 0.870588, 0.839216, 1)
-ambient_light_sky_contribution = 0.7
 
 [node name="Level 0" type="Node"]
 
@@ -31,23 +19,11 @@ ambient_light_sky_contribution = 0.7
 [node name="Ground" parent="." instance=ExtResource("1_wsmpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1nikr")
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_5rhnf")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.942805, 0.0118487, -0.333136, 0.333346, -0.0335118, 0.942209, 0, -0.999368, -0.0355448, 0, 36.586, -59.3348)
-light_color = Color(0.92549, 1, 0.94902, 1)
-shadow_enabled = true
-shadow_opacity = 0.8
-shadow_blur = 5.0
+[node name="DirectionalLight3D" parent="." instance=ExtResource("4_8jab8")]
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(0.866025, 0.245452, -0.435607, 0, 0.871214, 0.490904, 0.5, -0.425135, 0.754493, -13.316, 20.658, 40.689)
-
-[node name="Camera3D" type="Camera3D" parent="Marker3D"]
-transform = Transform3D(0.998764, -0.0167715, -0.0467913, 0.0199827, 0.997414, 0.0690304, 0.0455126, -0.0698805, 0.996517, -11.6595, 3.14982, 40.7645)
-current = true
-fov = 30.0
+[node name="Marker3D" parent="." instance=ExtResource("5_fwehg")]
 
 [node name="River" parent="." instance=ExtResource("3_14qdn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.5, 5)
@@ -64,5 +40,5 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4154, 1, 16.2011)
 [node name="Delivery Box" parent="." instance=ExtResource("7_7lwip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -15)
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_17nn6")]
+[node name="Player" parent="." instance=ExtResource("2_17nn6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16, 1.5, -14)

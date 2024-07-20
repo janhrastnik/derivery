@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bhfvbet03vgwh"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D"]
+transform = Transform3D(0.942805, 0.0118487, -0.333136, 0.333346, -0.0335118, 0.942209, 0, -0.999368, -0.0355448, 0, 36.586, -59.3348)
+light_color = Color(0.92549, 1, 0.94902, 1)
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 5.0

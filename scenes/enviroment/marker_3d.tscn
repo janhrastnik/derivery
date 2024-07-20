@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bk3nruqc2jql6"]
+
+[node name="Marker3D" type="Marker3D"]
+transform = Transform3D(0.866025, 0.245452, -0.435607, 0, 0.871214, 0.490904, 0.5, -0.425135, 0.754493, -13.316, 20.658, 40.689)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.998764, -0.0167715, -0.0467913, 0.0199827, 0.997414, 0.0690304, 0.0455126, -0.0698805, 0.996517, -11.6595, 3.14982, 40.7645)
+current = true
+fov = 30.0
