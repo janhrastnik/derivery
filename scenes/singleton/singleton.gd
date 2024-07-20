@@ -7,16 +7,6 @@ var current_level = 1
 var player = null
 var delivery_box = null
 
-var player_s_pos = [
-	Vector3(-16, 1.5, -14),
-	Vector3(-14, 3, 15.5)
-]
-
-var box_s_pos = [
-	Vector3(1, 2, -15),
-	Vector3(-16, 50, -7.5)
-]
-
 var level_names = [
 	"'Straight to the point'",
 	"'Something is afloat'"
