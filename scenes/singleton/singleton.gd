@@ -5,6 +5,20 @@ extends Node
 var current_level = 0
 
 var player = null
+var delivery_box = null
+
+var player_s_pos = [
+	Vector3(-16, 1.5, -14)
+]
+
+var box_s_pos = [
+	Vector3(1, 2, -15)
+]
+
+var level_names = [
+	"'Straight to the point'",
+	"'Something is afloat'"
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

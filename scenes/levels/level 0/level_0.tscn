@@ -62,7 +62,7 @@ transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.371
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4154, 1, 16.2011)
 
 [node name="Delivery Box" parent="." instance=ExtResource("7_7lwip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00856, 2.21631, -15.2551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -15)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_17nn6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.1654, 1.49792, -14.077)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16, 1.5, -14)

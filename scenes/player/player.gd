@@ -15,6 +15,7 @@ var target_velocity = Vector3.ZERO
 @onready var ui_animation_player: AnimationPlayer = get_node("AnimationPlayer")
 @onready var details_text: Label = get_node("CanvasLayer/UI/Details Text")
 @onready var victory_panel: Panel = get_node("CanvasLayer/UI/Victory Panel")
+@onready var level_title: Label = get_node("CanvasLayer/UI/Level Title")
 
 var nearby_box = null
 
@@ -23,14 +24,21 @@ var held_box = null
 var next_level_countdown = 5
 @onready var next_level_text: Label = get_node("CanvasLayer/UI/Victory Panel/Next Level Text")
 
+@onready var help_panel: Panel = get_node("CanvasLayer/UI/Help Panel")
+
 func _ready() -> void:
 	Singleton.player = self
+	level_title.text = Singleton.level_names[Singleton.current_level]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and nearby_box is DeliveryBox and held_box == null:
 		grab_delivery_box(nearby_box)
 	elif event.is_action_pressed("interact") and held_box != null:
 		release_delivery_box()
+	elif event.is_action("restart"):
+		get_tree().change_scene_to_file("res://scenes/levels/level 0/level_0.tscn")
+		# global_position = Singleton.player_s_pos[Singleton.current_level]
+		# Singleton.delivery_box.global_position = Singleton.box_s_pos[Singleton.current_level]
 
 func _physics_process(delta):
 	# We create a local variable to store the input direction.
@@ -122,3 +130,11 @@ func level_complete():
 		next_level_text.text = txt + str(next_level_countdown)
 		await get_tree().create_timer(1).timeout
 		next_level_countdown -= 1
+
+
+func _on_help_mouse_entered() -> void:
+	help_panel.visible = true
+
+
+func _on_help_mouse_exited() -> void:
+	help_panel.visible = false

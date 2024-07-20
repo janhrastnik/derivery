@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3juer55b315x"]
+[gd_scene load_steps=15 format=3 uid="uid://d3juer55b315x"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1l77p"]
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://scenes/player/Player Model.tscn" id="2_nqlyl"]
 [ext_resource type="LabelSettings" uid="uid://bcm2xcjp1m5s4" path="res://styles/game_font.tres" id="3_ll2dk"]
-[ext_resource type="FontFile" uid="uid://cysglof4jhqqx" path="res://assets/fonts/Overpass-VariableFont_wght.ttf" id="4_sx0rb"]
+[ext_resource type="StyleBox" uid="uid://c7ndjb0l72532" path="res://styles/panel.tres" id="4_w2ehs"]
+[ext_resource type="LabelSettings" uid="uid://3fll27v50xmj" path="res://styles/game_font_small.tres" id="5_11d85"]
+[ext_resource type="FontFile" uid="uid://dikq144w7kybq" path="res://assets/fonts/static/Overpass-Bold.ttf" id="5_387ik"]
+[ext_resource type="FontFile" uid="uid://cnemshddkakxy" path="res://assets/fonts/static/Overpass-BoldItalic.ttf" id="7_chpee"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0h5je"]
 radius = 2.0
@@ -11,45 +14,6 @@ height = 8.49522
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_37xx1"]
 size = Vector3(5.5, 9.79626, 5.5)
-
-[sub_resource type="Animation" id="Animation_270ik"]
-resource_name = "victory_popup"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/UI/Victory Panel:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(372.5, 400), Vector2(372.5, 224)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/UI/Victory Panel:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/UI/Victory Panel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_cylm5"]
 length = 0.001
@@ -90,25 +54,62 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_270ik"]
+resource_name = "victory_popup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/UI/Victory Panel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(372.5, 400), Vector2(372.5, 224)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/UI/Victory Panel:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/UI/Victory Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t5ebo"]
 _data = {
 "RESET": SubResource("Animation_cylm5"),
 "victory_popup": SubResource("Animation_270ik")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_060vb"]
-bg_color = Color(0.584314, 0.741176, 0.670588, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.11, 0.11, 0.11, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_1dx01"]
+font = ExtResource("5_387ik")
+font_size = 50
+font_color = Color(0.08, 0.08, 0.08, 0.615686)
 
-[sub_resource type="LabelSettings" id="LabelSettings_8n4vr"]
-font = ExtResource("4_sx0rb")
-font_size = 24
-shadow_size = 12
-shadow_color = Color(0, 0, 0, 0.54902)
+[sub_resource type="LabelSettings" id="LabelSettings_x2rno"]
+font = ExtResource("7_chpee")
+font_size = 32
+font_color = Color(0.9312, 0.96, 0.94704, 1)
+outline_size = 12
+outline_color = Color(0.12, 0.12, 0.12, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 3
@@ -145,6 +146,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Details Text" type="Label" parent="CanvasLayer/UI"]
 visible = false
@@ -179,7 +181,7 @@ offset_right = 387.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_060vb")
+theme_override_styles/panel = ExtResource("4_w2ehs")
 
 [node name="Label" type="Label" parent="CanvasLayer/UI/Victory Panel"]
 z_index = 1
@@ -209,8 +211,60 @@ offset_right = 89.5
 offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Moving on to next level in x"
-label_settings = SubResource("LabelSettings_8n4vr")
+text = "Moving on to the next level in x"
+label_settings = ExtResource("5_11d85")
+
+[node name="Help" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 85.0
+mouse_filter = 0
+text = "?"
+label_settings = SubResource("LabelSettings_1dx01")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help Panel" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 450.0
+offset_bottom = 250.0
+theme_override_styles/panel = ExtResource("4_w2ehs")
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Help Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 394.0
+offset_bottom = 195.0
+text = "Press R to restart.
+Complete the level by bringing
+the delivery box to its destination.
+Use the flow of the river to your 
+advantage."
+label_settings = ExtResource("5_11d85")
+
+[node name="Level Title" type="Label" parent="CanvasLayer/UI"]
+modulate = Color(1, 1, 1, 0.886275)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -434.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "aaaaa"
+label_settings = SubResource("LabelSettings_x2rno")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_entered"]
 [connection signal="body_exited" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/Help" to="." method="_on_help_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/Help" to="." method="_on_help_mouse_exited"]

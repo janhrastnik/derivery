@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://3fll27v50xmj"]
+
+[ext_resource type="FontFile" uid="uid://cysglof4jhqqx" path="res://assets/fonts/Overpass-VariableFont_wght.ttf" id="1_vdc7t"]
+
+[resource]
+font = ExtResource("1_vdc7t")
+font_size = 24
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.54902)
