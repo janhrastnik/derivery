@@ -1,0 +1,4 @@
+Music: https://incompetech.com/
+
+Sfx:
+ - clapping: https://freesound.org/people/gladkiy/sounds/347033/

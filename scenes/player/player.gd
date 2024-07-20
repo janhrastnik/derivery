@@ -77,7 +77,7 @@ func grab_delivery_box(box: RigidBody3D):
 	box.gravity_scale = 0
 	box.disable_mode = DisableMode.DISABLE_MODE_REMOVE
 	box.process_mode = Node.PROCESS_MODE_DISABLED
-	box.global_position = global_position + Vector3(0, 2, 0)
+	box.global_position = global_position + Vector3(0, 3.5, 0)
 	box.global_position += basis.z.z * Vector3(0, 0, -3)
 	box.global_position += basis.x.z * Vector3(3, 0, 0)
 
