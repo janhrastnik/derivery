@@ -418,7 +418,6 @@ _data = {
 }
 
 [node name="player" instance=ExtResource("1_6862b")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Body" parent="." index="0"]
 mesh = SubResource("ArrayMesh_3hnte")

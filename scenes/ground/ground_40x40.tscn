@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnif1aybqhck3"]
+
+[ext_resource type="Material" uid="uid://bfxskerll3w8a" path="res://materials/ground_material.tres" id="1_vfe72"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_13g7n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2j2sl"]
+material = ExtResource("1_vfe72")
+size = Vector3(40, 1, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e3iet"]
+size = Vector3(40, 1, 40)
+
+[node name="Ground" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_13g7n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2j2sl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_e3iet")

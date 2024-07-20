@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://352or62u8o5r"]
+
+[ext_resource type="Material" uid="uid://dtxelo6px2be6" path="res://materials/grass_material.tres" id="1_jixi6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqylm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yp5s2"]
+material = ExtResource("1_jixi6")
+
+[node name="Grass" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fqylm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yp5s2")

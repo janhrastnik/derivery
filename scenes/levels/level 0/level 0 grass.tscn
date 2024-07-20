@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk31smt06f4l4"]
+
+[ext_resource type="PackedScene" uid="uid://bl56lebn40lv7" path="res://scenes/ground/level_0_grass.glb" id="1_da0am"]
+[ext_resource type="Material" uid="uid://dtxelo6px2be6" path="res://materials/grass_material.tres" id="2_fi4mj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7hce"]
+size = Vector3(40, 2.5, 19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73nki"]
+size = Vector3(10, 2.5, 7)
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="level_0_grass" parent="." instance=ExtResource("1_da0am")]
+
+[node name="Cube" parent="level_0_grass" index="0"]
+material_override = ExtResource("2_fi4mj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.4996)
+shape = SubResource("BoxShape3D_v7hce")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -2.5)
+shape = SubResource("BoxShape3D_73nki")
+
+[editable path="level_0_grass"]

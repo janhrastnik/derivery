@@ -51,15 +51,14 @@ func _physics_process(delta):
 
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		# target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-		pass
+		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
 	# Moving the Character
 	velocity = target_velocity
 	
 	if held_box is RigidBody3D:
 		animation_player.play("Hold")
-	elif velocity.length() > 0:
+	elif abs(velocity.x) > 0 or abs(velocity.z) > 0:
 		animation_player.play("Move")
 	else:
 		animation_player.play("Idle")
