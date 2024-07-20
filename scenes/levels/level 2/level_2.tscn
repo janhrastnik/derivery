@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq4gau56p4prd"]
+
+[ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_bie0x"]
+[ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="2_68ytb"]
+[ext_resource type="PackedScene" uid="uid://bk3nruqc2jql6" path="res://scenes/enviroment/marker_3d.tscn" id="3_eteoo"]
+[ext_resource type="PackedScene" uid="uid://c5yyw3gi4mc8b" path="res://scenes/enviroment/world_environment.tscn" id="4_vmhwt"]
+[ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="5_kd0eu"]
+[ext_resource type="PackedScene" uid="uid://cfjokfdh78r4p" path="res://scenes/levels/level 2/level_2_grass.tscn" id="6_lh0kj"]
+[ext_resource type="PackedScene" uid="uid://reapw7d02kct" path="res://scenes/levels/level 2/level_2_river.tscn" id="7_hxv82"]
+
+[node name="Level 2" type="Node"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_bie0x")]
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("2_68ytb")]
+
+[node name="Marker3D" parent="." instance=ExtResource("3_eteoo")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_vmhwt")]
+
+[node name="Ground" parent="." instance=ExtResource("5_kd0eu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Grass" parent="." instance=ExtResource("6_lh0kj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4, 1.75, 2.5)
+
+[node name="River" parent="." instance=ExtResource("7_hxv82")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.75, 3)
+
+[editable path="Marker3D"]
