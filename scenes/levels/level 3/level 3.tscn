@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://i7p82gg0o2b6"]
+
+[ext_resource type="PackedScene" uid="uid://bb02vvqvuixem" path="res://scenes/bridges/bridge_4m.tscn" id="1_46bh6"]
+[ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_fr4l2"]
+[ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="1_pi6h5"]
+[ext_resource type="PackedScene" uid="uid://bk3nruqc2jql6" path="res://scenes/enviroment/marker_3d.tscn" id="2_aokvf"]
+[ext_resource type="PackedScene" uid="uid://c5yyw3gi4mc8b" path="res://scenes/enviroment/world_environment.tscn" id="3_hktt5"]
+[ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="4_s866l"]
+[ext_resource type="PackedScene" uid="uid://bcbeiwmpiaxrq" path="res://scenes/levels/level 3/level_3_grass.tscn" id="5_b0org"]
+[ext_resource type="PackedScene" uid="uid://cps5xutxh6nsm" path="res://scenes/levels/level 3/level_3_river.tscn" id="6_eyfmy"]
+[ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="7_5oxoy"]
+[ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="9_fo5y0"]
+[ext_resource type="PackedScene" uid="uid://0pn1dishktk4" path="res://scenes/interactable/multidelivery_platform.tscn" id="10_vyvb3"]
+
+[node name="Node" type="Node"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_fr4l2")]
+
+[node name="Bridge" parent="." instance=ExtResource("1_46bh6")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 8.7639, 3.26685, 15.5793)
+is_brittle = true
+cross_count = 1
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("1_pi6h5")]
+
+[node name="Marker3D" parent="." instance=ExtResource("2_aokvf")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_hktt5")]
+
+[node name="Ground" parent="." instance=ExtResource("4_s866l")]
+
+[node name="Grass" parent="." instance=ExtResource("5_b0org")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.053, 1.75, 0.05)
+
+[node name="River" parent="." instance=ExtResource("6_eyfmy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.895, 1.5, -2.21233)
+
+[node name="Player" parent="." instance=ExtResource("7_5oxoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3, 12)
+
+[node name="Bridge2" parent="." instance=ExtResource("1_46bh6")]
+transform = Transform3D(-3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0, 1, 15.9706, 3.30494, -9)
+is_brittle = true
+cross_count = 1
+
+[node name="Delivery Box" parent="." instance=ExtResource("9_fo5y0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.929, 4.68695, -14.671)
+
+[node name="Delivery Box2" parent="." instance=ExtResource("9_fo5y0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0196, 4.69202, -3.68567)
+
+[node name="Multidelivery Platform" parent="." instance=ExtResource("10_vyvb3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.57993, 3.39023, -14.6279)

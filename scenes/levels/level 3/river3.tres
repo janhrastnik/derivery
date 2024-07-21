@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="River3Resource" load_steps=2 format=3 uid="uid://dq0xndiwi7oix"]
+
+[ext_resource type="Script" path="res://scenes/levels/level 3/river3.gd" id="1_2tvsl"]
+
+[resource]
+script = ExtResource("1_2tvsl")
+points = [Vector3(9, 0, 21), Vector3(9, 0, 4.5), Vector3(-7, 0, 4.5), Vector3(-7, 0, -7), Vector3(23, 0, -7)]

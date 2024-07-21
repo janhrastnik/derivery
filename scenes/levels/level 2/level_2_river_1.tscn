@@ -24,6 +24,15 @@ shape = SubResource("ConcavePolygonShape3D_ht7qg")
 [node name="Cube_006" parent="level_2_river_1" index="0"]
 material_override = ExtResource("2_n3ua5")
 
+[node name="River Particles" parent="." instance=ExtResource("5_ens7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.344, 0, -16.678)
+
+[node name="River Particles2" parent="." instance=ExtResource("5_ens7x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.999, 0, -0.275553)
+
+[node name="River Particles3" parent="." instance=ExtResource("5_ens7x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.244, 0, 5.723)
+
 [node name="Path3D" type="Path3D" parent="."]
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
@@ -32,14 +41,5 @@ rotation_mode = 0
 cubic_interp = false
 loop = false
 tilt_enabled = false
-
-[node name="River Particles" parent="Path3D" instance=ExtResource("5_ens7x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.344, 0, -16.678)
-
-[node name="River Particles2" parent="Path3D" instance=ExtResource("5_ens7x")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.999, 0, -0.275553)
-
-[node name="River Particles3" parent="Path3D" instance=ExtResource("5_ens7x")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.244, 0, 5.723)
 
 [editable path="level_2_river_1"]

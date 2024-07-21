@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq4gau56p4prd"]
+[gd_scene load_steps=13 format=3 uid="uid://bq4gau56p4prd"]
 
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_bie0x"]
 [ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="2_68ytb"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="9_rir5o"]
 [ext_resource type="PackedScene" uid="uid://bb02vvqvuixem" path="res://scenes/bridges/bridge_4m.tscn" id="10_1o3t5"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="11_yn74v"]
+[ext_resource type="PackedScene" uid="uid://0pn1dishktk4" path="res://scenes/interactable/multidelivery_platform.tscn" id="12_euv3y"]
 
 [node name="Level 2" type="Node"]
 
@@ -38,12 +39,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1.5, 5.5)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16, 3, 16)
 
 [node name="Bridge" parent="." instance=ExtResource("10_1o3t5")]
-transform = Transform3D(-2.01241e-08, 0.460386, 0.887719, -1, -4.37114e-08, 0, 3.88034e-08, -0.887719, 0.460386, -12.0344, 3.39219, 7.33288)
+transform = Transform3D(-1.13133e-08, 0.258819, 0.965926, -1, -4.37114e-08, -8.88178e-16, 4.2222e-08, -0.965926, 0.258819, -12.6116, 3.35242, 7.18494)
+is_brittle = true
 
 [node name="Bridge2" parent="." instance=ExtResource("10_1o3t5")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 9.51549, 3.26387, 6.27402)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 13.5671, 3.43213, 6.63428)
+
+[node name="Delivery Box2" parent="." instance=ExtResource("11_yn74v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3801, 4.97931, -9.23623)
 
 [node name="Delivery Box" parent="." instance=ExtResource("11_yn74v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7594, 4.6875, -14.1421)
+
+[node name="Multidelivery Platform" parent="." instance=ExtResource("12_euv3y")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 14.426, 3.46997, -14.2751)
 
 [editable path="Marker3D"]

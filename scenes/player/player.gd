@@ -158,3 +158,4 @@ func _on_bridge_detector_body_entered(body: Node3D) -> void:
 func _on_bridge_detector_body_exited(body: Node3D) -> void:
 	if body is Bridge:
 		set_collision_mask_value(2, true)
+		body.cross_event()
