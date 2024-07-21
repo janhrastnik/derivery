@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3juer55b315x"]
+[gd_scene load_steps=19 format=3 uid="uid://d3juer55b315x"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1l77p"]
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://scenes/player/Player Model.tscn" id="2_nqlyl"]
@@ -8,6 +8,8 @@
 [ext_resource type="FontFile" uid="uid://dikq144w7kybq" path="res://assets/fonts/static/Overpass-Bold.ttf" id="5_387ik"]
 [ext_resource type="FontFile" uid="uid://cnemshddkakxy" path="res://assets/fonts/static/Overpass-BoldItalic.ttf" id="7_chpee"]
 [ext_resource type="AudioStream" uid="uid://cyua1uy1gtrc4" path="res://assets/sfx/yipee.wav" id="8_7ou67"]
+[ext_resource type="AudioStream" uid="uid://b8jf2164ryw8k" path="res://assets/sfx/box-drop.wav" id="9_imie2"]
+[ext_resource type="AudioStream" uid="uid://cu7me7xmkqvcy" path="res://assets/sfx/box-grab.wav" id="10_06coa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0h5je"]
 radius = 2.0
@@ -278,6 +280,14 @@ shape = SubResource("BoxShape3D_gi4uh")
 [node name="Yipee" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7ou67")
 volume_db = -5.0
+
+[node name="Box Drop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_imie2")
+volume_db = -8.0
+
+[node name="Box Grab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_06coa")
+volume_db = -8.0
 
 [connection signal="body_entered" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_entered"]
 [connection signal="body_exited" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_exited"]

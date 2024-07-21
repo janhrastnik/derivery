@@ -17,6 +17,8 @@ var target_velocity = Vector3.ZERO
 @onready var victory_panel: Panel = get_node("CanvasLayer/UI/Victory Panel")
 @onready var level_title: Label = get_node("CanvasLayer/UI/Level Title")
 @onready var yipee: AudioStreamPlayer = get_node("Yipee")
+@onready var box_grab: AudioStreamPlayer = get_node("Box Grab")
+@onready var box_drop: AudioStreamPlayer = get_node("Box Drop")
 
 var nearby_box = null
 
@@ -96,6 +98,7 @@ func _physics_process(delta):
 			collider.apply_central_impulse(-c.get_normal() * push_force * delta)
 
 func grab_delivery_box(box: DeliveryBox):
+	box_grab.play()
 	held_box = box
 	box.reparent(self)
 	box.leave_river()
@@ -110,6 +113,7 @@ func grab_delivery_box(box: DeliveryBox):
 	details_text.text = "Release Box [Spacebar]"
 
 func release_delivery_box():
+	box_drop.play()
 	held_box.reparent(get_parent())
 	held_box.gravity_scale = 1
 	held_box.disable_mode = DisableMode.DISABLE_MODE_KEEP_ACTIVE
