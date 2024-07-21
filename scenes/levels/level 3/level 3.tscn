@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://i7p82gg0o2b6"]
+[gd_scene load_steps=13 format=3 uid="uid://i7p82gg0o2b6"]
 
 [ext_resource type="PackedScene" uid="uid://bb02vvqvuixem" path="res://scenes/bridges/bridge_4m.tscn" id="1_46bh6"]
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_fr4l2"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d3juer55b315x" path="res://scenes/player/player.tscn" id="7_5oxoy"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="9_fo5y0"]
 [ext_resource type="PackedScene" uid="uid://0pn1dishktk4" path="res://scenes/interactable/multidelivery_platform.tscn" id="10_vyvb3"]
+[ext_resource type="PackedScene" uid="uid://chgxhvko6s0g8" path="res://scenes/water/dam.tscn" id="12_fxpom"]
 
 [node name="Node" type="Node"]
 
@@ -51,3 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0196, 4.69202, -3.68567)
 
 [node name="Multidelivery Platform" parent="." instance=ExtResource("10_vyvb3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.57993, 3.39023, -14.6279)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("12_fxpom")]
+transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -8.13749, 2.0302, -12.3149)
