@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bib3lvly5qmlg"]
+[gd_scene load_steps=9 format=3 uid="uid://bib3lvly5qmlg"]
 
 [ext_resource type="Script" path="res://scenes/water/river.gd" id="1_6dlcc"]
 [ext_resource type="PackedScene" uid="uid://b4vkd5gve4f3q" path="res://scenes/water/level_2_river_2.blend" id="1_8c7at"]
@@ -15,6 +15,8 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Curve3D" id="Curve3D_b5sk1"]
 
 [node name="River 2" type="StaticBody3D"]
 collision_layer = 2
@@ -46,5 +48,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.968
 
 [node name="River Particles2" parent="." instance=ExtResource("5_gkis4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.24278, -0.479248, -1.79308)
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_b5sk1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+rotation_mode = 0
+cubic_interp = false
+loop = false
+tilt_enabled = false
 
 [editable path="level_2_river_2"]

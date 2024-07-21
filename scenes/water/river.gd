@@ -4,14 +4,18 @@ extends StaticBody3D
 
 @onready var path: Path3D = get_node("Path3D")
 @onready var path_follow: PathFollow3D = get_node("Path3D/PathFollow3D")
+@onready var path_2: Path3D = get_node("Path3D2")
+@onready var path_follow_2: PathFollow3D = get_node("Path3D2/PathFollow3D")
 
 @export var river_resource: Resource
 
 var points: Array = []
 
 var box_ref: DeliveryBox = null
+var box_ref_2: DeliveryBox = null
 
 var is_floating_box = false
+var is_floating_box_2 = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,7 +31,11 @@ func _physics_process(delta: float) -> void:
 	if is_floating_box:
 		path_follow.progress += 4 * delta
 		if path_follow.progress_ratio == 1:
-			leave_river()
+			leave_river(box_ref)
+	if is_floating_box_2:
+		path_follow_2.progress += 4 * delta
+		if path_follow_2.progress_ratio == 1:
+			leave_river(box_ref_2)
 
 func calculate_path(box: DeliveryBox):
 	var c: Vector3 = box.position
@@ -37,7 +45,10 @@ func calculate_path(box: DeliveryBox):
 	var projected_point = Vector3.ZERO
 	var breakpoint_index = 0
 	
-	path_follow.progress = 0 # reset incase its not already 0
+	if not is_floating_box:
+		path_follow.progress = 0 # reset incase its not already 0
+	else:
+		path_follow_2.progress = 0
 	
 	var projs = []
 	var proj_diffs = []
@@ -62,19 +73,11 @@ func calculate_path(box: DeliveryBox):
 		
 		var proj = a + ab*md
 		var proj_diff = (proj - c).length()
-		print("PROJECTION: ", proj, ", DIFF: ", proj_diff)
+		# print("PROJECTION: ", proj, ", DIFF: ", proj_diff)
 		# print(proj.length())
 		
 		projs.append(proj)
 		proj_diffs.append(proj_diff)
-		
-		"""
-		if proj_diff < 1:
-			# good enough...
-			projected_point = proj
-			breakpoint_index = i
-			break
-		"""
 	
 	var min_diff = proj_diffs.min()
 	var min_diff_i = proj_diffs.find(min_diff)
@@ -87,23 +90,39 @@ func calculate_path(box: DeliveryBox):
 	new_points.insert(0, projected_point)
 	for p in new_points:
 		curve.add_point(p)
-	path.curve = curve
 	# print(new_points)
 	# print(curve)
 	box.position = projected_point
 	box.position += Vector3(0, 1, 0) # make box visible
-	path_follow.position = projected_point
-	box.reparent(path_follow)
-	box_ref = box
-	box.river_ref = self
-	is_floating_box = true
+	if not is_floating_box:
+		path.curve = curve
+		path_follow.position = projected_point
+		box.reparent(path_follow)
+		box_ref = box
+		box.river_ref = self
+		is_floating_box = true
+	else: # there already is a floating box
+		path_2.curve = curve
+		path_follow_2.position = projected_point
+		box.reparent(path_follow_2)
+		box_ref_2 = box
+		box.river_ref = self
+		is_floating_box_2 = true
 
-func leave_river():
+func leave_river(box: DeliveryBox):
 	print("leaving river: ", self)
-	is_floating_box = false
-	box_ref.river_ref = null
-	box_ref.freeze = false
-	box_ref.in_river = false
-	box_ref.gravity_scale = 1
-	box_ref = null
-	path.curve = null
+	if box == box_ref:
+		is_floating_box = false
+		box_ref.river_ref = null
+		box_ref.freeze = false
+		box_ref.in_river = false
+		box_ref.gravity_scale = 1
+		box_ref = null
+		# path.curve = null
+	elif box == box_ref_2:
+		is_floating_box_2 = false
+		box_ref_2.river_ref = null
+		box_ref_2.freeze = false
+		box_ref_2.in_river = false
+		box_ref_2.gravity_scale = 1
+		box_ref_2 = null	

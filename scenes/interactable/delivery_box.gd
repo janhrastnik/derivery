@@ -58,7 +58,7 @@ func deffered_river_enter(river: River):
 
 func leave_river():
 	if river_ref != null:
-		river_ref.leave_river()
+		river_ref.leave_river(self)
 		# river_ref = null
 		# in_river = false
 		# freeze = false

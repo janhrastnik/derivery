@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqr121612vw1a"]
+
+[ext_resource type="PackedScene" uid="uid://dxc0ihcjpxs1c" path="res://scenes/water/level_6_river_1.glb" id="1_0s0y7"]
+[ext_resource type="Script" path="res://scenes/water/river.gd" id="1_rgtlm"]
+[ext_resource type="PackedScene" uid="uid://dprjpd46fus7o" path="res://scenes/enviroment/river_particles.tscn" id="1_t50uu"]
+[ext_resource type="Resource" uid="uid://6a5gf08isgl6" path="res://scenes/levels/level 6/river6_1.tres" id="2_5dnxo"]
+[ext_resource type="Material" uid="uid://bco8ocu4lskyd" path="res://materials/water_material.tres" id="2_83g3d"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q5b5a"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[sub_resource type="Curve3D" id="Curve3D_66xi1"]
+
+[node name="River" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rgtlm")
+river_resource = ExtResource("2_5dnxo")
+
+[node name="River Particles" parent="." instance=ExtResource("1_t50uu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.288269, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_q5b5a")
+
+[node name="level_6_river_1" parent="." instance=ExtResource("1_0s0y7")]
+
+[node name="Cube_001" parent="level_6_river_1" index="0"]
+material_override = ExtResource("2_83g3d")
+
+[node name="Path3D" type="Path3D" parent="."]
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, 0)
+rotation_mode = 0
+cubic_interp = false
+loop = false
+tilt_enabled = false
+
+[node name="Path3D2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_66xi1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
+rotation_mode = 0
+cubic_interp = false
+loop = false
+tilt_enabled = false
+
+[editable path="level_6_river_1"]

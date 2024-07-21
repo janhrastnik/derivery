@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="River6_1Resource" load_steps=2 format=3 uid="uid://6a5gf08isgl6"]
+
+[ext_resource type="Script" path="res://scenes/levels/level 6/river6_1.gd" id="1_6u5sk"]
+
+[resource]
+script = ExtResource("1_6u5sk")
