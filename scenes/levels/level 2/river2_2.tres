@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="River2_2Resource" load_steps=2 format=3 uid="uid://mtg8qit5c00m"]
+
+[ext_resource type="Script" path="res://scenes/levels/level 2/river2_2.gd" id="1_ghpb7"]
+
+[resource]
+script = ExtResource("1_ghpb7")

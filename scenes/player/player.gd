@@ -16,10 +16,13 @@ var target_velocity = Vector3.ZERO
 @onready var details_text: Label = get_node("CanvasLayer/UI/Details Text")
 @onready var victory_panel: Panel = get_node("CanvasLayer/UI/Victory Panel")
 @onready var level_title: Label = get_node("CanvasLayer/UI/Level Title")
+@onready var yipee: AudioStreamPlayer = get_node("Yipee")
 
 var nearby_box = null
 
 var held_box = null
+
+var has_yipeed = false
 
 var next_level_countdown = 5
 @onready var next_level_text: Label = get_node("CanvasLayer/UI/Victory Panel/Next Level Text")
@@ -69,6 +72,10 @@ func _physics_process(delta):
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+		print(target_velocity.y)
+		if target_velocity.y < -30 and not yipee.playing and not has_yipeed:
+			yipee.play()
+			has_yipeed = true
 
 	# Moving the Character
 	velocity = target_velocity
@@ -92,6 +99,7 @@ func grab_delivery_box(box: DeliveryBox):
 	held_box = box
 	box.reparent(self)
 	box.leave_river()
+	box.already_switched = false
 	box.gravity_scale = 0
 	box.disable_mode = DisableMode.DISABLE_MODE_REMOVE
 	box.process_mode = Node.PROCESS_MODE_DISABLED
@@ -113,15 +121,11 @@ func _on_delivery_box_detector_body_entered(body: Node3D) -> void:
 		details_text.text = "Grab Box [Spacebar]"
 		details_text.visible = true
 		nearby_box = body
-	elif body is Bridge:
-		set_collision_mask_value(2, false)
 
 func _on_delivery_box_detector_body_exited(body: Node3D) -> void:
 	if body is DeliveryBox and held_box == null:
 		nearby_box = null
 		details_text.visible = false
-	elif body is Bridge:
-		set_collision_mask_value(2, true)
 
 func level_complete():
 	ui_animation_player.play("victory_popup")
@@ -140,3 +144,13 @@ func _on_help_mouse_entered() -> void:
 
 func _on_help_mouse_exited() -> void:
 	help_panel.visible = false
+
+
+func _on_bridge_detector_body_entered(body: Node3D) -> void:
+	if body is Bridge:
+		set_collision_mask_value(2, false)
+
+
+func _on_bridge_detector_body_exited(body: Node3D) -> void:
+	if body is Bridge:
+		set_collision_mask_value(2, true)

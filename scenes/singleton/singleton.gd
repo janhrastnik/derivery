@@ -9,7 +9,8 @@ var delivery_box = null
 
 var level_names = [
 	"'Straight to the point'",
-	"'Something is afloat'"
+	"'Something is afloat'",
+	"'Who built this stinkin' bridge?'"
 ]
 
 # Called when the node enters the scene tree for the first time.

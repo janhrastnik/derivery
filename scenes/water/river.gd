@@ -99,7 +99,9 @@ func calculate_path(box: DeliveryBox):
 	is_floating_box = true
 
 func leave_river():
+	print("leaving river: ", self)
 	is_floating_box = false
+	box_ref.river_ref = null
 	box_ref.freeze = false
 	box_ref.in_river = false
 	box_ref.gravity_scale = 1

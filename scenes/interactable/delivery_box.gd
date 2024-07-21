@@ -6,6 +6,8 @@ var in_river = false
 
 var river_ref: River = null
 
+var already_switched = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Singleton.delivery_box = self
@@ -15,9 +17,14 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_river_seeking_area_body_entered(body: Node3D) -> void:
-	print("body entered")
+	# print("body entered")
 	if body is River and not in_river:
-		print("RIVER ENTER CALL")
+		# print("RIVER ENTER CALL")
+		river_enter(body)		
+	elif body is River and in_river and body != river_ref and not already_switched:
+		# print("RIVER SWITCH CALL")
+		already_switched = true
+		leave_river()
 		river_enter(body)
 
 func river_enter(river: River):
@@ -40,6 +47,6 @@ func deffered_river_enter(river: River):
 func leave_river():
 	if river_ref != null:
 		river_ref.leave_river()
-		river_ref = null
-		in_river = false
-		freeze = false
+		# river_ref = null
+		# in_river = false
+		# freeze = false

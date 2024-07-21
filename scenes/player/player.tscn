@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3juer55b315x"]
+[gd_scene load_steps=17 format=3 uid="uid://d3juer55b315x"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1l77p"]
 [ext_resource type="PackedScene" uid="uid://o5bmetcsbsju" path="res://scenes/player/Player Model.tscn" id="2_nqlyl"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://3fll27v50xmj" path="res://styles/game_font_small.tres" id="5_11d85"]
 [ext_resource type="FontFile" uid="uid://dikq144w7kybq" path="res://assets/fonts/static/Overpass-Bold.ttf" id="5_387ik"]
 [ext_resource type="FontFile" uid="uid://cnemshddkakxy" path="res://assets/fonts/static/Overpass-BoldItalic.ttf" id="7_chpee"]
+[ext_resource type="AudioStream" uid="uid://cyua1uy1gtrc4" path="res://assets/sfx/yipee.wav" id="8_7ou67"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0h5je"]
 radius = 2.0
@@ -111,11 +112,15 @@ font_color = Color(0.9312, 0.96, 0.94704, 1)
 outline_size = 12
 outline_color = Color(0.12, 0.12, 0.12, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gi4uh"]
+size = Vector3(5, 9, 5)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 3
 collision_mask = 7
 floor_constant_speed = true
 floor_max_angle = 1.0472
+floor_snap_length = 0.05
 script = ExtResource("1_1l77p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -264,7 +269,19 @@ label_settings = SubResource("LabelSettings_x2rno")
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Bridge Detector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bridge Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31407, 0)
+shape = SubResource("BoxShape3D_gi4uh")
+
+[node name="Yipee" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7ou67")
+volume_db = -5.0
+
 [connection signal="body_entered" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_entered"]
 [connection signal="body_exited" from="Delivery Box Detector" to="." method="_on_delivery_box_detector_body_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/UI/Help" to="." method="_on_help_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/UI/Help" to="." method="_on_help_mouse_exited"]
+[connection signal="body_entered" from="Bridge Detector" to="." method="_on_bridge_detector_body_entered"]
+[connection signal="body_exited" from="Bridge Detector" to="." method="_on_bridge_detector_body_exited"]
