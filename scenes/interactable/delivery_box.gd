@@ -24,17 +24,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not is_heavy:
+		print(gravity_scale)
 
 func _on_river_seeking_area_body_entered(body: Node3D) -> void:
-	print("body entered")
+	# print("body entered")
 	if body is River and not in_river:
-		print("RIVER ENTER CALL")
+		# print("RIVER ENTER CALL")
 		river_enter(body)
 		Singleton.player.box_drop.stop()
 		water_splash.play()
 	elif body is River and in_river and body != river_ref and not already_switched:
-		print("RIVER SWITCH CALL")
+		# print("RIVER SWITCH CALL")
 		already_switched = true
 		leave_river()
 		river_enter(body)
@@ -42,9 +43,7 @@ func _on_river_seeking_area_body_entered(body: Node3D) -> void:
 func river_enter(river: River):
 	#linear_velocity = Vector3.ZERO
 	#angular_velocity = Vector3.ZERO
-	freeze = true
-	in_river = true
-	gravity_scale = 0
+	# print("here")
 	call_deferred("deffered_river_enter", river)
 
 func deffered_river_enter(river: River):
@@ -53,7 +52,9 @@ func deffered_river_enter(river: River):
 	# set_collision_mask_value(2, false)
 	# set_collision_layer_value(1, false)
 	# process_mode = Node.PROCESS_MODE_DISABLED
-	
+	freeze = true
+	in_river = true
+	gravity_scale = 0
 	river.calculate_path(self)
 
 func leave_river():

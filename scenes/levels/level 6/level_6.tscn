@@ -36,7 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031, 1.5, 1.894)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.932, 1.5, 11.892)
 
 [node name="Player" parent="." instance=ExtResource("9_3evsc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17, 3, -15)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17, 3.53821, 16.5326)
 
 [node name="Bridge" parent="." instance=ExtResource("10_ph6h3")]
 transform = Transform3D(-3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0, 1, 12.6406, 3.34589, 1.47734)
