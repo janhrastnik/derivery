@@ -4,29 +4,37 @@ extends RigidBody3D
 
 @onready var water_splash: AudioStreamPlayer = get_node("Water Splash")
 
+@export var is_heavy = false
+
+var metal_material = load("res://materials/metal_material.tres")
+
 var in_river = false
 
 var river_ref: River = null
 
 var already_switched = false
 
+@onready var cube: MeshInstance3D = get_node("delivery_box/Cube")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Singleton.delivery_box = self
+	if is_heavy:
+		cube.set_surface_override_material(0, metal_material)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_river_seeking_area_body_entered(body: Node3D) -> void:
-	# print("body entered")
+	print("body entered")
 	if body is River and not in_river:
-		# print("RIVER ENTER CALL")
+		print("RIVER ENTER CALL")
 		river_enter(body)
 		Singleton.player.box_drop.stop()
 		water_splash.play()
 	elif body is River and in_river and body != river_ref and not already_switched:
-		# print("RIVER SWITCH CALL")
+		print("RIVER SWITCH CALL")
 		already_switched = true
 		leave_river()
 		river_enter(body)

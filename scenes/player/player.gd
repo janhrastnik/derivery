@@ -37,7 +37,10 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and nearby_box is DeliveryBox and held_box == null:
-		grab_delivery_box(nearby_box)
+		if nearby_box.is_heavy:
+			push_heavy_box(nearby_box)
+		elif not nearby_box.is_heavy:
+			grab_delivery_box(nearby_box)
 	elif event.is_action_pressed("interact") and held_box != null:
 		release_delivery_box()
 	elif event.is_action("restart"):
@@ -74,7 +77,6 @@ func _physics_process(delta):
 	# Vertical Velocity
 	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
-		print(target_velocity.y)
 		if target_velocity.y < -30 and not yipee.playing and not has_yipeed:
 			yipee.play()
 			has_yipeed = true
@@ -122,7 +124,10 @@ func release_delivery_box():
 
 func _on_delivery_box_detector_body_entered(body: Node3D) -> void:
 	if body is DeliveryBox:
-		details_text.text = "Grab Box [Spacebar]"
+		if not body.is_heavy:
+			details_text.text = "Grab Box [Spacebar]"
+		else:
+			details_text.text = "Push Box [Spacebar]"
 		details_text.visible = true
 		nearby_box = body
 
@@ -159,3 +164,12 @@ func _on_bridge_detector_body_exited(body: Node3D) -> void:
 	if body is Bridge:
 		set_collision_mask_value(2, true)
 		body.cross_event()
+
+func push_heavy_box(box: DeliveryBox):
+	var diff: Vector3 = box.global_position - global_position
+	if box.in_river:
+		box.global_position += diff * 1.6
+		box.global_position += Vector3(0, 2, 0)
+		box.leave_river()
+	else:
+		box.apply_central_impulse(diff)

@@ -11,7 +11,9 @@ var level_names = [
 	"'Straight to the point'",
 	"'Something is afloat'",
 	"'Who built this stinkin' bridge?'",
-	"'This is starting to be concerning'"
+	"'This is starting to be concerning'",
+	"'How am I supposed to carry this??'",
+	"'There's a right time for everything'"
 ]
 
 # Called when the node enters the scene tree for the first time.

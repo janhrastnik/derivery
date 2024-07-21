@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://5pis0sac7nbq"]
+
+[ext_resource type="Material" uid="uid://bj00a8g6hgvtq" path="res://materials/metal_material.tres" id="1_u6jj7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hax45"]
+
+[node name="MetalTest" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_u6jj7")
+mesh = SubResource("BoxMesh_hax45")
