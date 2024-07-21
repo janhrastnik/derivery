@@ -95,6 +95,7 @@ func calculate_path(box: DeliveryBox):
 	box.position = projected_point
 	box.position += Vector3(0, 1, 0) # make box visible
 	if not is_floating_box:
+		print("setting box_ref")
 		path.curve = curve
 		path_follow.position = projected_point
 		box.reparent(path_follow)
@@ -110,13 +111,19 @@ func calculate_path(box: DeliveryBox):
 		is_floating_box_2 = true
 
 func leave_river(box: DeliveryBox):
+	call_deferred("deferred_leave_river", box)
+
+func deferred_leave_river(box: DeliveryBox):
 	print("leaving river: ", self)
 	if box == box_ref:
+		print("resetting box_ref")
 		is_floating_box = false
 		box_ref.river_ref = null
 		box_ref.freeze = false
 		box_ref.in_river = false
 		box_ref.gravity_scale = 1
+		if box_ref.is_heavy:
+			box_ref.reparent(get_parent())
 		box_ref = null
 		# path.curve = null
 	elif box == box_ref_2:
@@ -125,4 +132,6 @@ func leave_river(box: DeliveryBox):
 		box_ref_2.freeze = false
 		box_ref_2.in_river = false
 		box_ref_2.gravity_scale = 1
-		box_ref_2 = null	
+		if box_ref_2.is_heavy:
+			box_ref_2.reparent(get_parent())
+		box_ref_2 = null

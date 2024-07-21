@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://by1er5ova7n20"]
+[gd_scene load_steps=14 format=3 uid="uid://by1er5ova7n20"]
 
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_88wt1"]
 [ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="2_mtadx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bb02vvqvuixem" path="res://scenes/bridges/bridge_4m.tscn" id="10_ph6h3"]
 [ext_resource type="PackedScene" uid="uid://0pn1dishktk4" path="res://scenes/interactable/multidelivery_platform.tscn" id="11_mb2hb"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="12_237bk"]
+[ext_resource type="PackedScene" uid="uid://ccudysjl7xg8e" path="res://scenes/enviroment/tree.tscn" id="13_ysetq"]
 
 [node name="Level 6" type="Node"]
 
@@ -54,3 +55,9 @@ is_heavy = true
 [node name="Delivery Box2" parent="." instance=ExtResource("12_237bk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1244, 4.09399, 6.44836)
 is_heavy = true
+
+[node name="Tree" parent="." instance=ExtResource("13_ysetq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6079, 2.99992, -2.55341)
+
+[node name="Tree2" parent="." instance=ExtResource("13_ysetq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.35001, 3, -2.46415)

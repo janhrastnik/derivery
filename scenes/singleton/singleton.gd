@@ -20,7 +20,7 @@ var level_names = [
 	"'This is starting to be concerning'",
 	"'How am I supposed to carry this??'",
 	"'There's a right time for everything'",
-	"Two at once"
+	"'Two at once'"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -33,17 +33,15 @@ func _process(delta: float) -> void:
 	pass
 
 func level_complete_event():
-	current_level += 1
 	if player is Player:
-		if current_level == 7:
-			get_tree().change_scene_to_file("res://scenes/ui/game_complete.tscn")
-			victory_music()
-		else:
-			player.level_complete()
+		current_level += 1
+		player.level_complete()
 
 func switch_level():
-	get_tree().change_scene_to_file("res://scenes/levels/level {lvl}/level_{lvl}.tscn".format({"lvl": str(current_level)}))
-
+	if current_level == 7:
+		get_tree().change_scene_to_file("res://scenes/ui/game_complete.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/levels/level {lvl}/level_{lvl}.tscn".format({"lvl": str(current_level)}))
 
 func _on_audio_stream_player_finished() -> void:
 	if playlist_index == 0:

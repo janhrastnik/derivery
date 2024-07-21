@@ -27,7 +27,6 @@ func show_notice():
 	notice_sound.play()
 	disclaimer.visible = true
 
-
 func _on_continue_button_pressed() -> void:
 	button_sound.play()
 	button.disabled = true

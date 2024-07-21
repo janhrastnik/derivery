@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb3e3gy5nxgy6"]
+[gd_scene load_steps=12 format=3 uid="uid://bb3e3gy5nxgy6"]
 
+[ext_resource type="Script" path="res://scenes/ui/game_complete.gd" id="1_gpngv"]
 [ext_resource type="Texture2D" uid="uid://kxv67yh8qy8" path="res://assets/sprites/wave_individual.png" id="1_pvqwu"]
 [ext_resource type="StyleBox" uid="uid://c7ndjb0l72532" path="res://styles/panel.tres" id="2_fvccq"]
 [ext_resource type="LabelSettings" uid="uid://bcm2xcjp1m5s4" path="res://styles/game_font.tres" id="2_vq0ib"]
@@ -54,6 +55,7 @@ _data = {
 }
 
 [node name="Game Complete" type="Node"]
+script = ExtResource("1_gpngv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -154,3 +156,5 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_ih703")
 text = "Back to main menu"
+
+[connection signal="pressed" from="CanvasLayer/Game Complete Panel/Button" to="." method="_on_button_pressed"]

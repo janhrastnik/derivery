@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bq4gau56p4prd"]
+[gd_scene load_steps=14 format=3 uid="uid://bq4gau56p4prd"]
 
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_bie0x"]
 [ext_resource type="PackedScene" uid="uid://bhfvbet03vgwh" path="res://scenes/enviroment/directional_light_3d.tscn" id="2_68ytb"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bb02vvqvuixem" path="res://scenes/bridges/bridge_4m.tscn" id="10_1o3t5"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="11_yn74v"]
 [ext_resource type="PackedScene" uid="uid://0pn1dishktk4" path="res://scenes/interactable/multidelivery_platform.tscn" id="12_euv3y"]
+[ext_resource type="PackedScene" uid="uid://ccudysjl7xg8e" path="res://scenes/enviroment/tree.tscn" id="13_mpfcn"]
 
 [node name="Level 2" type="Node"]
 
@@ -53,5 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7594, 4.6875, -14.1421)
 
 [node name="Multidelivery Platform" parent="." instance=ExtResource("12_euv3y")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 14.426, 3.46997, -14.2751)
+
+[node name="Tree" parent="." instance=ExtResource("13_mpfcn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5334, 3.0315, 17.2219)
 
 [editable path="Marker3D"]

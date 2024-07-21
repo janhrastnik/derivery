@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmoggcc87gkro"]
+[gd_scene load_steps=13 format=3 uid="uid://cmoggcc87gkro"]
 
 [ext_resource type="PackedScene" uid="uid://dx3cx5lo7875m" path="res://scenes/ui/bg_animation.tscn" id="1_dhjxn"]
 [ext_resource type="PackedScene" uid="uid://cnif1aybqhck3" path="res://scenes/ground/ground_40x40.tscn" id="1_wsmpi"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dmx6yo6sjx6le" path="res://scenes/bridges/bridge_2m.tscn" id="5_yp6xu"]
 [ext_resource type="PackedScene" uid="uid://dbi1fk5j17up6" path="res://scenes/interactable/delivery_platform.tscn" id="6_5p1s8"]
 [ext_resource type="PackedScene" uid="uid://bt2gfgcl2t6gp" path="res://scenes/interactable/delivery_box.tscn" id="7_7lwip"]
+[ext_resource type="PackedScene" uid="uid://ccudysjl7xg8e" path="res://scenes/enviroment/tree.tscn" id="12_shsji"]
 
 [node name="Level 0" type="Node"]
 
@@ -35,10 +36,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.012
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.400421, 1.02697, 9.24251)
 
 [node name="Delivery Platform" parent="." instance=ExtResource("6_5p1s8")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4154, 1, 16.2011)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 15.4154, 1.25293, 16.2011)
 
 [node name="Delivery Box" parent="." instance=ExtResource("7_7lwip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -15)
 
 [node name="Player" parent="." instance=ExtResource("2_17nn6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16, 1.5, -14)
+
+[node name="Tree" parent="." instance=ExtResource("12_shsji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.911, 1, -13.534)
+
+[node name="Tree" parent="Tree" instance=ExtResource("12_shsji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0212, -0.109629, 31.6846)

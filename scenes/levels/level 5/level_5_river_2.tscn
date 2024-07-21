@@ -43,7 +43,11 @@ material_override = ExtResource("2_krv7s")
 curve = SubResource("Curve3D_uifk0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, 2.5)
+rotation_mode = 0
+cubic_interp = false
+loop = false
+tilt_enabled = false
 
 [node name="Path3D2" type="Path3D" parent="."]
 curve = SubResource("Curve3D_no8g3")
